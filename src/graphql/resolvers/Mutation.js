@@ -5,10 +5,13 @@ const Mutation = {
     const newMovie = new Movie( { original_language, original_title, overview, popularity, poster_path, release_date, title, video, vote_average, vote_count } );
     return await newMovie.save()
   },
-  /* deleteMovie: async ( _, { _id }) => {
+  deleteMovie: async ( _, { _id }) => {
     await Movie.findByIdAndRemove( _id );
     return await Movie.find();
-  } */
+  },
+    async updateMovie( _, { input, _id }) {
+      return await Movie.findByIdAndUpdate( _id, input, {new: true})
+  }
 }
 
 export default Mutation;

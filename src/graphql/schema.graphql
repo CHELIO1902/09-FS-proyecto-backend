@@ -5,10 +5,25 @@ type Query {
 
 type Mutation {
   createMovie( original_language: String!, original_title: String!, overview: String, popularity: String, poster_path: String, release_date: String!, title: String!, video: Boolean, vote_average: String, vote_count: String ): Movie
-  #deleteMovie( _id: ID! ) : [movie]
+  deleteMovie( _id: ID! ) : Movie
+  updateMovie(input: MovieInput, _id : ID!) : Movie
 }
 
 type Movie {
+  _id: ID!
+  original_language: String!
+  original_title: String!
+  overview: String
+  popularity: String
+  poster_path: String
+  release_date: String!
+  title: String!
+  video: Boolean
+  vote_average: String
+  vote_count: String
+}
+
+input MovieInput {
   _id: ID
   original_language: String!
   original_title: String!
